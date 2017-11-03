@@ -6,4 +6,13 @@
 @import "variables";
 
 // Bootstrap
-@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+//@import "~bootstrap-sass/assets/stylesheets/bootstrap";
+
+@import "../global/plugins/font-awesome/css/font-awesome.min.css";
+@import "../global/plugins/simple-line-icons/simple-line-icons.min.css";
+@import "../global/plugins/bootstrap/css/bootstrap.min.css";
+@import "../global/plugins/bootstrap-switch/css/bootstrap-switch.min.css";
+@import "../global/css/components.min.css";
+@import "../global/css/plugins.min.css";
+@import "../layouts/layout/css/layout.min.css";
+@import "../layouts/layout/css/themes/darkblue.min.css";
