@@ -159,6 +159,7 @@
                         <!-- END SIDEBAR MENU -->
                         <!-- END SIDEBAR MENU -->
                     </div>
+
                     <!-- END SIDEBAR -->
 
                 <!-- END SIDEBAR -->
