@@ -1,4 +1,4 @@
-
+<h4><b>{{$snip->title}}</b></h4>
 <pre>
     <code>
         <a href="javascript:;" id="snip" data-type="textarea" data-pk="{{$snip->id}}"

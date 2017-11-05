@@ -6,18 +6,28 @@
             border-bottom: none;
         }
         pre {
-            /* display: block; */
-             padding: 0px;
+            padding: 0px;
             margin: 0 0 0px;
             font-size: 13px;
-            line-height: 1.42857;
+            line-height: 1.3;
             word-break: break-all;
             word-wrap: break-word;
             color: #333;
             background-color: #ffffff;
             border: 1px solid #fff;
             overflow: hidden;
-            /* border-radius: 4px; */
+        }
+        .page-header.navbar .page-logo .logo-default {
+            margin: 5px 35px!important;
+        }
+
+        .hljs {
+            display: block;
+            overflow-x: auto;
+            padding: 0em;
+            background: #ffffff;
+            border-color: #fff;
+            margin: -20px;
         }
     </style>
 @endpush
@@ -32,15 +42,52 @@
         <div class="col-md-12" id="contentGeral">
         </div>
             <br><br><br>
-            <button class="btn btn-success" style="margin-top: 25px">Novo</button>
+            <a class="btn green btn-outline sbold" data-toggle="modal" href="#draggable"> Novo Snip </a>
 
 
+        </div>
+    </div>
+
+    <div class="modal fade draggable-modal" id="draggable" tabindex="-1" role="basic" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
+                    <h4 class="modal-title">Novo Snippet</h4>
+                </div>
+                <div class="modal-body">
+                    <div class="portlet-body form">
+                        <form method="post" class="form-horizontal form-bordered form-snip">
+                            {{csrf_field()}} {{method_field('POST')}}
+                           <div class="input-group">
+                             <span class="input-group-addon">
+                                <i class="fa fa-code"></i>
+                             </span>
+                                <input type="text" class="form-control" name="snip_title" placeholder="Titulo Do Snippet">
+                           </div>
+                            <div class="form-body">
+                                <div class="form-group"><br>
+                                    <textarea class="form-control" name="snip_text" rows="9" placeholder="Snippet"></textarea>
+                                </div>
+                            </div>
+
+                    </div>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn green" id="savesnip">Salvar</button>
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 @endsection
 
 @push('scripts')
     <script>
+        var user = "{{Auth::user()->id}}";
+
         $(document).ready(function () {
             $.fn.editable.defaults.params = function (params) {
                 params._token = $("#_token").data("token");
@@ -60,7 +107,6 @@
                     });
                 });
 
-
                 $(document).on('click', '#snp', function () {
                     $("#contentGeral").empty();
                     var id = $(this).attr('data-id');
@@ -73,7 +119,6 @@
                        abort();
                     }
 
-
                     $.ajax({
                         url: '/content/' + id,
                         type: 'GET',
@@ -83,15 +128,44 @@
                             $('pre > code').each(function() {
                                 hljs.highlightBlock(this);
                             });
+                        },
+                        beforeSend: function(){
+                            $('#preloader').fadeIn();
+                        },
+                        complete: function(){
+                            $('#preloader').fadeOut("slow");
                         }
-
-                    })
+                    });
                 });
 
-
-
-
         });
+
+
+
+        $(function(){
+            $('#savesnip').on('click', function (e) {
+                e.preventDefault();
+                $.ajax({
+                    url : '/new-snip',
+                    type : "POST",
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                        "snip_title": $('input[name=snip_title]').val(),
+                        "snip_text": $('textarea[name=snip_text]').val()
+                    },
+                    beforeSend: function(){
+                        $('#preloader').fadeIn();
+                    },
+                    success : function($data) {
+                        $('.modal').modal('toggle');
+                        $('.page-header-fixed').load(' .page-header-fixed');
+                    },
+                    complete: function(){
+                        $('#preloader').fadeOut("slow");
+                    }
+                });
+            });
+        })
     </script>
 
 @endpush

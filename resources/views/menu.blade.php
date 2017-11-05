@@ -1,9 +1,10 @@
+
 <div class="page-wrapper">
-    <div class="page-header navbar navbar-fixed-top">
+    <div class="page-header navbar navbar-fixed-top  blue-oleo ">
         <div class="page-header-inner ">
             <div class="page-logo">
                 <a href="index.html">
-                    <img src="layouts/layout/img/logo.png" alt="logo" class="logo-default" /> </a>
+                    <img src="img/coding.png" width="40px" alt="logo" class="logo-default" /> </a>
                 <div class="menu-toggler sidebar-toggler">
                     <span></span>
                 </div>
@@ -75,7 +76,7 @@
                     @foreach ($snp as $snip)
                     <li class="nav-item">
                         <a href="javascript:;" class=""  id="snp" data-id="{{$snip->id}}">
-                            <i class="fa fa-edit"></i>
+                            <i class="fa fa-code"></i>
                             <span class="title">{{$snip->title}}</span>
                         </a>
                     </li>

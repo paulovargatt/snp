@@ -12,45 +12,33 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="global/plugins/bootstrap-editable/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
+    <link href="css/style.css" rel="stylesheet" type="text/css" />
 
 </head>
 @stack('styles')
 <body>
     <div id="app">
+        <div id="preloader" style="display:none;"></div>
     @if (Auth::check())
         @include('menu')
     @endif
 
         @yield('content')
 
-
-
-
-        <!-- Scripts -->
-
-    <script src="global/plugins/respond.min.js"></script>
-    <script src="global/plugins/excanvas.min.js"></script>
-    <script src="global/plugins/ie8.fix.min.js"></script>
-    <![endif]-->
-    <!-- BEGIN CORE PLUGINS -->
     <script src="global/plugins/jquery.min.js" type="text/javascript"></script>
     <script src="global/plugins/js.cookie.min.js" type="text/javascript"></script>
     <script src="global/scripts/app.min.js" type="text/javascript"></script>
-
     <script src="layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
-    <script src="layouts/layout/scripts/demo.min.js" type="text/javascript"></script>
     <script src="layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
     <script src="layouts/global/scripts/quick-nav.min.js" type="text/javascript"></script>
-    <!-- END THEME LAYOUT SCRIPTS -->
     <script src="{{ asset('js/app.js') }}"  type="text/javascript"></script>
     <script src="global/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.min.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/php.min.js"></script>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/sql.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script>
     @stack('scripts')
-
+   
 </body>
 </html>

@@ -47,4 +47,13 @@ class HomeController extends Controller
         return response ()->json ($snip);
     }
 
+    public function newSnip(Request $request){
+        $data = [
+            'user_id' => Auth::user()->id,
+            'title' => $request['snip_title'],
+            'snip' => $request['snip_text']
+        ];
+        return Snippet::create($data);
+    }
+
 }
