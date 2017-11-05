@@ -138,6 +138,28 @@
                     });
                 });
 
+
+            $(document).on('click', '#delete', function () {
+            var snp = $(this).attr('data-snp');
+                $.ajax({
+                    url: 'delete/' + snp,
+                    type: "POST",
+                    data: {
+                        "_token": "{{ csrf_token() }}",
+                    },
+                    beforeSend: function(){
+                        $('#preloader').fadeIn();
+                    },
+                    success : function($data) {
+                        $('.page-header-fixed').load(' .page-header-fixed');
+                    },
+                    complete: function(){
+                        $('#preloader').fadeOut("slow");
+                    }
+                })
+            });
+
+
         });
 
 
@@ -166,6 +188,8 @@
                 });
             });
         })
+
+
     </script>
 
 @endpush

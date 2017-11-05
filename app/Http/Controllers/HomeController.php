@@ -56,4 +56,8 @@ class HomeController extends Controller
         return Snippet::create($data);
     }
 
+    public function delete($id){
+        Snippet::where('id','=',$id)->delete();
+    }
+
 }

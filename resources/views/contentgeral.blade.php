@@ -7,7 +7,10 @@
         </a>
     </code>
 </pre>
-
+<button class="btn btn-danger pull-right" id="delete" data-snp="{{$snip->id}}">Deletar</button>
 
 @push('scripts')
+    <script>
+
+    </script>
 @endpush

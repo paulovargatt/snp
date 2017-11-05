@@ -16,6 +16,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/update-content/{id}', 'HomeController@update')->name('update-content');
 
     Route::post('/new-snip', 'HomeController@newSnip')->name('newSnip');
+
+    Route::post('/delete/{id}', 'HomeController@delete')->name('delete');
 });
 
 
