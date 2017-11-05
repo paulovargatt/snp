@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Snippet;
 
 class HomeController extends Controller
 {
@@ -17,18 +18,33 @@ class HomeController extends Controller
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
     public function index()
     {
-        return view('home');
+        $snp =   Snippet::where('user_id','=',Auth::user()->id)->get();
+
+        return view('home',compact('snp'));
     }
 
     public function sair(){
       Auth::logout();
       return view('welcome');
     }
+
+    public function content(Request $request, $id){
+        $data = ['id' => $request['id']];
+        $snip =  Snippet::where('id','=',$data['id'])->first();
+        return view('contentgeral',compact('snip'));
+    }
+
+    public function update(Request $request, $id){
+        $content = $request->all('value');
+        $data = [
+            'snip' => $content['value'],
+        ];
+         Snippet::where('id','=',$id )->update($data);
+        $snip = array ('status' => 'success',
+            'msg' => 'Atualizado com sucesso',);
+        return response ()->json ($snip);
+    }
+
 }

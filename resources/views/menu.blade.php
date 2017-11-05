@@ -1,4 +1,3 @@
-
 <div class="page-wrapper">
     <div class="page-header navbar navbar-fixed-top">
         <div class="page-header-inner ">
@@ -72,31 +71,15 @@
                         </form>
                         <!-- END RESPONSIVE QUICK SEARCH FORM -->
                     </li>
-                    <li class="nav-item start active">
-                        <a href="javascript:;" class="">
-                            <i class="icon-home"></i>
-                            <span class="title">Inicio</span>
+
+                    @foreach ($snp as $snip)
+                    <li class="nav-item">
+                        <a href="javascript:;" class=""  id="snp" data-id="{{$snip->id}}">
+                            <i class="fa fa-edit"></i>
+                            <span class="title">{{$snip->title}}</span>
                         </a>
                     </li>
-
-
-                    <li class="nav-item start">
-                        <a href="javascript:;" class="nav-link nav-toggle">
-                            <i class="icon-home"></i>
-                            <span class="title">Tags</span>
-                            <span class="selected"></span>
-                            <span class="arrow open"></span>
-                        </a>
-                        <ul class="sub-menu">
-                            <li class="nav-item start">
-                                <a href="index.html" class="nav-link ">
-                                    <i class="icon-bar-chart"></i>
-                                    <span class="title">Dashboard 1</span>
-                                    <span class="selected"></span>
-                                </a>
-                            </li>
-                        </ul>
-                    </li>
+                    @endforeach
                     </li>
                 </ul>
             </div>
