@@ -5,5 +5,5 @@ div#preloader
 url('../img/loader.gif') no-repeat center center; }
 
 #contentGeral{
-    min-height: 190px;
+    min-height: 128px;
 }

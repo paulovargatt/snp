@@ -49,7 +49,8 @@
                             </a>
                           </code>
                       </pre>
-                         <button class="btn btn-danger pull-right" id="delete" data-snp="@if($snipet){{$snipet->id}}@endif">Deletar</button>
+                        @if($snipet) <button class="btn btn-danger pull-right" id="delete" data-snp="@if($snipet){{$snipet->id}}@endif">Deletar</button>
+                        @endif
                     </div>
             <a class="btn blue-madison" style="margin-top: -65px; z-index: 55;position: relative;    margin-left: 16px;"
                data-toggle="modal" href="#draggable"> Novo Snip </a>
