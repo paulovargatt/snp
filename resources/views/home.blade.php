@@ -133,7 +133,7 @@
                         type: 'GET',
                         success: function (content) {
                             $("#loaderFeat").remove();
-                            $("#contentGeral").append(content);
+                            $("#contentGeral").append(content).hide().fadeIn(500);
                             HighColor();
                         },
                         beforeSend: function(){
@@ -220,7 +220,7 @@
                 success: function (content) {
                     $("#loaderFeat").remove();
                     $("#contentGeral").empty();
-                    $("#contentGeral").append(content);
+                    $("#contentGeral").append(content).hide().fadeIn(500);
                     $('pre > code').each(function () {
                         hljs.highlightBlock(this);
                     });
