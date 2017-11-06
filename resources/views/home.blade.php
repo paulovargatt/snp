@@ -37,14 +37,23 @@
     <br>
     <div class="page-content-wrapper">
         <div class="page-content">
-
-            <div class="quick-nav-overlay"></div>
-        <div class="col-md-12" id="contentGeral">
-        </div>
+             <div class="quick-nav-overlay"></div>
+                    <div class="col-md-12" id="contentGeral">
+                        <h4><b><a href="javascript:;" id="title_snip" data-type="text" data-pk="@if($snipet){{ $snipet->id }}@endif"
+                                  class="editable editable-click"
+                                  style="display: inline;">@if($snipet) {{$snipet->title}}@endif </a></b></h4>
+                      <pre>
+                        <code>
+                            <a href="javascript:;" id="snip" data-type="textarea" data-pk="@if($snipet){{$snipet->id}}@endif"
+                               data-placeholder="Snippets" class="editable editable-pre-wrapped editable-click" name="snip">
+                         @if($snipet){{$snipet->snip}}@endif
+                            </a>
+                        </code>
+                    </pre>
+                <button class="btn btn-danger pull-right" id="delete" data-snp="@if($snipet){{$snipet->id}}@endif">Deletar</button>
+            </div>
             <br><br><br>
             <a class="btn green btn-outline sbold" data-toggle="modal" href="#draggable"> Novo Snip </a>
-
-
         </div>
     </div>
 
@@ -152,16 +161,30 @@
                     },
                     success : function($data) {
                         $('.page-header-fixed').load(' .page-header-fixed');
+                        $("#contentGeral").empty();
+                        GetLastSnip();
                     },
                     complete: function(){
                         $('#preloader').fadeOut("slow");
                     }
-                })
+                });
+            });
+
+            //Edit Title
+            $(document).on('click','#title_snip', function () {
+                var id = $(this).attr('data-pk');
+                $(this).editable({
+                    url: '/edit-title/' +id,
+                    pk: 2,
+                    title_snip: 'title_snip',
+                    success: function(response) {
+                        $('.page-header-fixed').load(' .page-header-fixed');
+                    }
+                });
             });
 
 
         });
-
 
 
         $(function(){
@@ -181,14 +204,36 @@
                     success : function($data) {
                         $('.modal').modal('toggle');
                         $('.page-header-fixed').load(' .page-header-fixed');
+                        $("#contentGeral").empty();
+                        GetLastSnip();
                     },
                     complete: function(){
                         $('#preloader').fadeOut("slow");
                     }
                 });
             });
-        })
+        });
 
+
+        function GetLastSnip() {
+            $.ajax({
+                url: '/getlast',
+                type: 'GET',
+                success: function (content) {
+                    $("#loaderFeat").remove();
+                    $("#contentGeral").append(content);
+                    $('pre > code').each(function () {
+                        hljs.highlightBlock(this);
+                    });
+                },
+                beforeSend: function () {
+                    $('#preloader').fadeIn();
+                },
+                complete: function () {
+                    $('#preloader').fadeOut("slow");
+                }
+            });
+        };
 
     </script>
 

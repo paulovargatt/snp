@@ -13,10 +13,15 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/sair', 'HomeController@sair')->name('sair');
 
     Route::get('/content/{id}', 'HomeController@content')->name('content');
+
+    Route::get('/getlast', 'HomeController@GetLastSnip')->name('GetLastSnip');
+
+
     Route::post('/update-content/{id}', 'HomeController@update')->name('update-content');
 
     Route::post('/new-snip', 'HomeController@newSnip')->name('newSnip');
 
+    Route::post('/edit-title/{id}', 'HomeController@editTitle')->name('editTitle');
     Route::post('/delete/{id}', 'HomeController@delete')->name('delete');
 });
 
