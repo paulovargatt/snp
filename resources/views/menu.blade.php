@@ -17,27 +17,13 @@
 
                     <li class="dropdown dropdown-user">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
-                            <img alt="" class="img-circle" src="layouts/layout/img/avatar3_small.jpg" />
                             <span class="username username-hide-on-mobile">{{ ucwords(Auth::user()->name) }}  </span>
-                            <i class="fa fa-angle-down"></i>
                         </a>
-                        <ul class="dropdown-menu dropdown-menu-default">
-                            @if (Auth::check())
-                            <li>
-                                <a href="../admin_1/app_todo.html">
-                                    <i class="icon-rocket"></i> My Snippets
-                                    <span class="badge badge-success"> 7 </span>
-                                </a>
-                            </li>
-                            <li class="divider"> </li>
-                            <li><a href="{{url('sair')}}">Sair</a></li>
-                            @endif
-                        </ul>
                     </li>
                     <!-- END USER LOGIN DROPDOWN -->
                     <li class="dropdown dropdown-quick-sidebar-toggler">
                         <a href="javascript:;" class="dropdown-toggle">
-                            <i class="icon-logout"></i>
+                            <a href="{{url('sair')}}"  style="top: -29px;color: #dedede;"><i class="icon-logout"></i></a>
                         </a>
                     </li>
 

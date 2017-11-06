@@ -51,6 +51,8 @@
                         </code>
                     </pre>
                 <button class="btn btn-danger pull-right" id="delete" data-snp="@if($snipet){{$snipet->id}}@endif">Deletar</button>
+                        <a href="javascript:;" id="pencil">
+                            <i class="fa fa-pencil"></i> [edit] </a>
             </div>
             <br><br><br>
             <a class="btn green btn-outline sbold" data-toggle="modal" href="#draggable"> Novo Snip </a>
@@ -84,8 +86,8 @@
 
                 </div>
                 <div class="modal-footer">
-                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
                     <button type="submit" class="btn green" id="savesnip">Salvar</button>
+                    <button type="button" class="btn dark btn-outline" data-dismiss="modal">Close</button>
                     </form>
                 </div>
             </div>
@@ -104,6 +106,7 @@
             };
                 $.fn.editable.defaults.mode = 'inline';
 
+               
                 $(document).on('click', '#snip', function () {
                     var ide = $(this).attr('data-pk');
                     $(this).editable({
@@ -134,9 +137,7 @@
                         success: function (content) {
                             $("#loaderFeat").remove();
                             $("#contentGeral").append(content);
-                            $('pre > code').each(function() {
-                                hljs.highlightBlock(this);
-                            });
+                            HighColor();
                         },
                         beforeSend: function(){
                             $('#preloader').fadeIn();
@@ -179,13 +180,13 @@
                     title_snip: 'title_snip',
                     success: function(response) {
                         $('.page-header-fixed').load(' .page-header-fixed');
+
                     }
                 });
             });
 
 
         });
-
 
         $(function(){
             $('#savesnip').on('click', function (e) {
@@ -221,6 +222,7 @@
                 type: 'GET',
                 success: function (content) {
                     $("#loaderFeat").remove();
+                    $("#contentGeral").empty();
                     $("#contentGeral").append(content);
                     $('pre > code').each(function () {
                         hljs.highlightBlock(this);
@@ -234,6 +236,14 @@
                 }
             });
         };
+
+        function HighColor(){
+            $('pre > code').each(function() {
+                hljs.highlightBlock(this);
+            });
+        }
+
+
 
     </script>
 

@@ -13,7 +13,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="global/plugins/bootstrap-editable/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet">
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/default.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
 
@@ -26,8 +26,7 @@
         @include('menu')
     @endif
 
-        @yield('content')
-
+    @yield('content')
     <script src="global/plugins/jquery.min.js" type="text/javascript"></script>
     <script src="global/plugins/js.cookie.min.js" type="text/javascript"></script>
     <script src="global/scripts/app.min.js" type="text/javascript"></script>
