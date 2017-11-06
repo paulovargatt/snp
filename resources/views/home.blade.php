@@ -27,7 +27,7 @@
             padding: 0em;
             background: #ffffff;
             border-color: #fff;
-            margin: -20px;
+            margin: 0px;
         }
     </style>
 @endpush
@@ -40,22 +40,19 @@
              <div class="quick-nav-overlay"></div>
                     <div class="col-md-12" id="contentGeral">
                         <h4><b><a href="javascript:;" id="title_snip" data-type="text" data-pk="@if($snipet){{ $snipet->id }}@endif"
-                                  class="editable editable-click"
-                                  style="display: inline;">@if($snipet) {{$snipet->title}}@endif </a></b></h4>
+                        class="editable editable-click" style="display: inline;">@if($snipet){{$snipet->title}}@endif </a></b></h4>
                       <pre>
-                        <code>
+                          <code>
                             <a href="javascript:;" id="snip" data-type="textarea" data-pk="@if($snipet){{$snipet->id}}@endif"
-                               data-placeholder="Snippets" class="editable editable-pre-wrapped editable-click" name="snip">
-                         @if($snipet){{$snipet->snip}}@endif
+                               data-placeholder="Snippets" class="editable editable-pre-wrapped editable-click"
+                               name="snip">@if($snipet){{$snipet->snip}}@endif
                             </a>
-                        </code>
-                    </pre>
-                <button class="btn btn-danger pull-right" id="delete" data-snp="@if($snipet){{$snipet->id}}@endif">Deletar</button>
-                        <a href="javascript:;" id="pencil">
-                            <i class="fa fa-pencil"></i> [edit] </a>
-            </div>
-            <br><br><br>
-            <a class="btn green btn-outline sbold" data-toggle="modal" href="#draggable"> Novo Snip </a>
+                          </code>
+                      </pre>
+                         <button class="btn btn-danger pull-right" id="delete" data-snp="@if($snipet){{$snipet->id}}@endif">Deletar</button>
+                    </div>
+            <a class="btn blue-madison" style="margin-top: -65px; z-index: 55;position: relative;    margin-left: 16px;"
+               data-toggle="modal" href="#draggable"> Novo Snip </a>
         </div>
     </div>
 
@@ -106,7 +103,7 @@
             };
                 $.fn.editable.defaults.mode = 'inline';
 
-               
+
                 $(document).on('click', '#snip', function () {
                     var ide = $(this).attr('data-pk');
                     $(this).editable({
