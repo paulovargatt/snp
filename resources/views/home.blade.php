@@ -18,7 +18,8 @@
             overflow: hidden;
         }
         .page-header.navbar .page-logo .logo-default {
-            margin: 5px 35px!important;
+            margin: 0px 23px!important;
+            width: 126px;
         }
 
         .hljs {
@@ -28,6 +29,9 @@
             background: #ffffff;
             border-color: #fff;
             margin: 0px;
+        }
+        .page-header.navbar {
+            background-color: #364150;
         }
     </style>
 @endpush
@@ -39,6 +43,7 @@
         <div class="page-content">
              <div class="quick-nav-overlay"></div>
                     <div class="col-md-12" id="contentGeral">
+                        @if($snipet)
                         <h4><b><a href="javascript:;" id="title_snip" data-type="text" data-pk="@if($snipet){{ $snipet->id }}@endif"
                         class="editable editable-click" style="display: inline;">@if($snipet){{$snipet->title}}@endif </a></b></h4>
                       <pre>
@@ -49,6 +54,7 @@
                             </a>
                           </code>
                       </pre>
+                        @endif
                         @if($snipet) <button class="btn btn-danger pull-right" id="delete" data-snp="@if($snipet){{$snipet->id}}@endif">Deletar</button>
                         @endif
                     </div>
