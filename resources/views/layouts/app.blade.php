@@ -12,6 +12,10 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="global/plugins/bootstrap-editable/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet">
+    <link href="global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+
+
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs.min.css">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
@@ -29,6 +33,10 @@
     @yield('content')
     <script src="global/plugins/jquery.min.js" type="text/javascript"></script>
     <script src="global/plugins/js.cookie.min.js" type="text/javascript"></script>
+    <script src="global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
+    <script src="http://keenthemes.com/preview/metronic/theme/assets/pages/scripts/components-select2.min.js" type="text/javascript"></script>
+
+
     <script src="global/scripts/app.min.js" type="text/javascript"></script>
     <script src="layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
     <script src="layouts/global/scripts/quick-sidebar.min.js" type="text/javascript"></script>
@@ -36,6 +44,7 @@
     <script src="{{ asset('js/app.js') }}"  type="text/javascript"></script>
     <script src="global/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.min.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+        <script src="http://keenthemes.com/preview/metronic/theme/assets/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js"></script>
         <script>hljs.initHighlightingOnLoad();</script>
     @stack('scripts')
    

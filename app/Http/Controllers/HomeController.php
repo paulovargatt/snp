@@ -77,4 +77,22 @@ class HomeController extends Controller
         Snippet::where('id','=',$id)->delete();
     }
 
+    public function snipFind(Request $request){
+
+            $term = trim($request->q);
+            if (empty($term)) {
+                return \Response::json([]);
+            }
+            $snip = Snippet::where('user_id','=',Auth::user()->id)->search($term)->limit(5)->get();
+
+            $formatted_tags = [];
+
+            foreach ($snip as $snipet) {
+                $formatted_tags[] = ['id' => $snipet->id, 'text' => $snipet->title];
+            }
+
+            return \Response::json($formatted_tags);
+    }
+
+
 }

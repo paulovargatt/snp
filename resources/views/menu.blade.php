@@ -48,7 +48,13 @@
                                 <i class="icon-close"></i>
                             </a>
                             <div class="input-group">
-                                <input type="text" class="form-control" placeholder="Search...">
+                                <form>
+                                    <div class="form-group">
+                                        <select id="snip_list" name="snip_list[]" id="snp" data-id="id" class="form-control select2-allow-clear">
+
+                                        </select>
+                                    </div>
+                                </form>
                                 <span class="input-group-btn">
                                             <a href="javascript:;" class="btn submit">
                                                 <i class="icon-magnifier"></i>

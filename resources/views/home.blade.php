@@ -33,6 +33,8 @@
         .page-header.navbar {
             background-color: #364150;
         }
+
+
     </style>
 @endpush
 @section('content')
@@ -44,19 +46,23 @@
              <div class="quick-nav-overlay"></div>
                     <div class="col-md-12" id="contentGeral">
                         @if($snipet)
-                        <h4><b><a href="javascript:;" id="title_snip" data-type="text" data-pk="@if($snipet){{ $snipet->id }}@endif"
-                        class="editable editable-click" style="display: inline;">@if($snipet){{$snipet->title}}@endif </a></b></h4>
+                        <h4 style="margin-bottom: -15px;"><b><a href="javascript:;" id="title_snip" data-type="text" data-pk="@if($snipet){{ $snipet->id }}@endif"
+                        class="editable editable-click">@if($snipet){{$snipet->title}}@endif </a></b></h4>
                       <pre>
                           <code>
                             <a href="javascript:;" id="snip" data-type="textarea" data-pk="@if($snipet){{$snipet->id}}@endif"
-                               data-placeholder="Snippets" class="editable editable-pre-wrapped editable-click"
+                               data-placeholder="Snippets" style="display: block" class="editable editable-pre-wrapped editable-click"
                                name="snip">@if($snipet){{$snipet->snip}}@endif
                             </a>
                           </code>
                       </pre>
                         @endif
-                        @if($snipet) <button class="btn btn-danger pull-right" id="delete" data-snp="@if($snipet){{$snipet->id}}@endif">Deletar</button>
-                        @endif
+                        @if($snipet)
+                            <button class="btn red-mint pull-right" data-toggle="confirmation" data-placement="left" data-btn-ok-label="Continue"
+                            data-btn-ok-icon="icon-like" data-btn-ok-class="btn-success delete" data-btn-cancel-label="Stoooop!"
+                            data-btn-cancel-icon="icon-close" data-btn-cancel-class="btn-danger" data-original-title="Tem certeza?"
+                            title="" aria-describedby="confirmation357616" data-snp="@if($snipet){{$snipet->id}}@endif">
+                           Deletar!</button>@endif
                     </div>
             <a class="btn blue-madison" style="margin-top: -65px; z-index: 55;position: relative;    margin-left: 16px;"
                data-toggle="modal" href="#draggable"> Novo Snip </a>
@@ -75,10 +81,8 @@
                         <form method="post" class="form-horizontal form-bordered form-snip">
                             {{csrf_field()}} {{method_field('POST')}}
                            <div class="input-group">
-                             <span class="input-group-addon">
-                                <i class="fa fa-code"></i>
-                             </span>
-                                <input type="text" class="form-control" name="snip_title" placeholder="Titulo Do Snippet">
+                             <span class="input-group-addon"><i class="fa fa-code"></i></span>
+                             <input type="text" class="form-control" name="snip_title" placeholder="Titulo Do Snippet">
                            </div>
                             <div class="form-body">
                                 <div class="form-group"><br>
@@ -201,7 +205,10 @@
                     data: {
                         "_token": "{{ csrf_token() }}",
                         "snip_title": $('input[name=snip_title]').val(),
-                        "snip_text": $('textarea[name=snip_text]').val()
+                        "snip_text": $('textarea[name=snip_text]').val(),
+                        "user_name": $('input[name=user_name]').val(),
+                        "user_mail": $('input[name=user_mail]').val(),
+                        "user_pass": $('input[name=user_pass]').val()
                     },
                     beforeSend: function(){
                         $('#preloader').fadeIn();
@@ -218,7 +225,6 @@
                 });
             });
         });
-
 
         function GetLastSnip() {
             $.ajax({
@@ -248,6 +254,27 @@
         }
 
 
+        $('#snip_list').select2({
+            placeholder: "Pesquise",
+            minimumInputLength: 3,
+            minimumResultsForSearch: Infinity,
+            multiple: false,
+            ajax: {
+                url: '/snip/find',
+                dataType: 'json',
+                data: function (params) {
+                    return {
+                        q: $.trim(params.term)
+                    };
+                },
+                processResults: function (data) {
+                    return {
+                        results: data
+                    };
+                },
+                cache: true
+            }
+        });
 
     </script>
 

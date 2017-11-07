@@ -16,6 +16,8 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/getlast', 'HomeController@GetLastSnip')->name('GetLastSnip');
 
+    Route::get('/snip/find', 'HomeController@snipFind')->name('snipFind');
+
 
     Route::post('/update-content/{id}', 'HomeController@update')->name('update-content');
 
