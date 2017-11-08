@@ -43,7 +43,24 @@
             background: #fff;
             z-index: 55551;
         }
-
+        .select2-container--bootstrap .select2-selection {
+            background-color: #364150;
+            border: 1px solid #364150;
+            border-radius: 4px;
+            color: #fff;
+            font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+            font-size: 14px;
+            outline: 0;
+        }
+        .select2-container--bootstrap.select2-container--focus .select2-selection, .select2-container--bootstrap.select2-container--open .select2-selection{
+            -webkit-box-shadow: inset 0 1px 1px rgba(0, 0, 0, 0.01), 0 0 8px rgba(147, 161, 187, 0);
+            box-shadow: inset 0 1px 1px rgba(0,0,0,0.075), 0 0 8px rgba(147, 161, 187, 0.04);
+            border-color: #364150;
+        }
+        .select2-container--bootstrap .select2-selection--single .select2-selection__rendered, .select2-selection__placeholder {
+            color: #e6e7e8!important;
+            padding: 0;
+        }
 
     </style>
 @endpush
@@ -259,8 +276,9 @@
         }
 
        function UpSelectTwo() {
-            $('#multi-append').select2({
-                placeholder: "Pesquise",
+           $('#multi-append').select2({
+                language: "pt-BR",
+                placeholder: "Pesquise na sua coleção",
                 minimumInputLength: 1,
                 minimumResultsForSearch: Infinity,
                 multiple: false,
@@ -279,7 +297,9 @@
                     },
                     cache: true
                 }
+
             });
+
 
            $(document.body).on("change","#multi-append",function(){
                var str = "";

@@ -12,15 +12,15 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="global/plugins/bootstrap-editable/bootstrap-editable/css/bootstrap-editable.css" rel="stylesheet">
-    <link href="global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
-    <link href="global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
+
 
 
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/vs.min.css">
     <link href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700&subset=all" rel="stylesheet" type="text/css" />
     <link href="css/style.css" rel="stylesheet" type="text/css" />
-
+    <link href="global/plugins/select2/css/select2.min.css" rel="stylesheet" type="text/css" />
+    <link href="global/plugins/select2/css/select2-bootstrap.min.css" rel="stylesheet" type="text/css" />
 </head>
 @stack('styles')
 <body>
