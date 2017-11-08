@@ -20,7 +20,7 @@ class HomeController extends Controller
 
     public function index()
     {
-        $snpMenu =   Snippet::where('user_id','=',Auth::user()->id)->orderBy('created_at','DESC')->get();
+        $snpMenu =   Snippet::where('user_id','=',Auth::user()->id)->orderBy('created_at','DESC')->paginate(10);
         $snipet = Snippet::where('user_id','=',Auth::user()->id)->orderBy('created_at','DESC')->first();
         return view('home',compact('snpMenu','snipet'));
     }
@@ -88,7 +88,7 @@ class HomeController extends Controller
             $formatted_tags = [];
 
             foreach ($snip as $snipet) {
-                $formatted_tags[] = ['id' => $snipet->id, 'text' => $snipet->title];
+                $formatted_tags[] = ['id' => $snipet->id, 'data-id' =>  $snipet->id, 'text' => $snipet->title];
             }
 
             return \Response::json($formatted_tags);

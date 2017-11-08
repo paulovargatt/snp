@@ -3,16 +3,27 @@
     <div class="page-header navbar navbar-fixed-top  blue-oleo ">
         <div class="page-header-inner ">
             <div class="page-logo">
-                <a href="index.html">
-                    <img src="img/coding.png" width="40px" alt="logo" class="logo-default" /> </a>
+                <a onclick="GetLastSnip()">
+                    <img src="img/coding.png" width="40px" alt="GoCode" class="logo-default" /> </a>
                 <div class="menu-toggler sidebar-toggler">
                     <span></span>
                 </div>
             </div>
+            <form style="width: 246px; position: absolute;top: 7px;    left: 246px;">
+                <div class="form-group">
+                    <div class="input-group select2-bootstrap-append">
+                        <select id="multi-append" name="snip_list[]" id="snp" data-id="id" class="form-control select2">
+                        </select>
+                    </div>
+                </div>
+            </form>
             <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
                 <span></span>
             </a>
+
+
             <div class="top-menu">
+
                 <ul class="nav navbar-nav pull-right">
 
                     <li class="dropdown dropdown-user">
@@ -41,30 +52,7 @@
                             <span></span>
                         </div>
                     </li>
-                    <br>
-                    <li class="sidebar-search-wrapper">
-                        <form class="sidebar-search  " action="../admin_1/page_general_search_3.html" method="POST">
-                            <a href="javascript:;" class="remove">
-                                <i class="icon-close"></i>
-                            </a>
-                            <div class="input-group">
-                                <form>
-                                    <div class="form-group">
-                                        <select id="snip_list" name="snip_list[]" id="snp" data-id="id" class="form-control select2-allow-clear">
-
-                                        </select>
-                                    </div>
-                                </form>
-                                <span class="input-group-btn">
-                                            <a href="javascript:;" class="btn submit">
-                                                <i class="icon-magnifier"></i>
-                                            </a>
-                                        </span>
-                            </div>
-                        </form>
-                        <!-- END RESPONSIVE QUICK SEARCH FORM -->
-                    </li>
-
+                    <br><div style="margin-top: 11px"></div>
                     @foreach ($snpMenu as $snip)
                     <li class="nav-item">
                         <a href="javascript:;" class=""  id="snp" data-id="{{$snip->id}}">

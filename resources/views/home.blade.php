@@ -34,6 +34,16 @@
             background-color: #364150;
         }
 
+        .select2-container--bootstrap .select2-dropdown {
+            -webkit-box-shadow: 0 6px 12px rgba(0, 0, 0, 0.175);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
+            border-color: #ffffff;
+            overflow-x: hidden;
+            margin-top: -1px;
+            background: #fff;
+            z-index: 55551;
+        }
+
 
     </style>
 @endpush
@@ -58,10 +68,7 @@
                       </pre>
                         @endif
                         @if($snipet)
-                            <button class="btn red-mint pull-right" data-toggle="confirmation" data-placement="left" data-btn-ok-label="Continue"
-                            data-btn-ok-icon="icon-like" data-btn-ok-class="btn-success delete" data-btn-cancel-label="Stoooop!"
-                            data-btn-cancel-icon="icon-close" data-btn-cancel-class="btn-danger" data-original-title="Tem certeza?"
-                            title="" aria-describedby="confirmation357616" data-snp="@if($snipet){{$snipet->id}}@endif">
+                            <button class="btn red-mint pull-right" id="delete" data-snp="@if($snipet){{$snipet->id}}@endif">
                            Deletar!</button>@endif
                     </div>
             <a class="btn blue-madison" style="margin-top: -65px; z-index: 55;position: relative;    margin-left: 16px;"
@@ -171,10 +178,10 @@
                     success : function($data) {
                         $('.page-header-fixed').load(' .page-header-fixed');
                         $("#contentGeral").empty();
-                        GetLastSnip();
                     },
                     complete: function(){
                         $('#preloader').fadeOut("slow");
+                        GetLastSnip();
                     }
                 });
             });
@@ -206,9 +213,6 @@
                         "_token": "{{ csrf_token() }}",
                         "snip_title": $('input[name=snip_title]').val(),
                         "snip_text": $('textarea[name=snip_text]').val(),
-                        "user_name": $('input[name=user_name]').val(),
-                        "user_mail": $('input[name=user_mail]').val(),
-                        "user_pass": $('input[name=user_pass]').val()
                     },
                     beforeSend: function(){
                         $('#preloader').fadeIn();
@@ -217,11 +221,12 @@
                         $('.modal').modal('toggle');
                         $('.page-header-fixed').load(' .page-header-fixed');
                         $("#contentGeral").empty();
-                        GetLastSnip();
                     },
                     complete: function(){
                         $('#preloader').fadeOut("slow");
+                        GetLastSnip();
                     }
+
                 });
             });
         });
@@ -245,7 +250,7 @@
                     $('#preloader').fadeOut("slow");
                 }
             });
-        };
+        }
 
         function HighColor(){
             $('pre > code').each(function() {
@@ -253,27 +258,56 @@
             });
         }
 
+       function UpSelectTwo() {
+            $('#multi-append').select2({
+                placeholder: "Pesquise",
+                minimumInputLength: 1,
+                minimumResultsForSearch: Infinity,
+                multiple: false,
+                ajax: {
+                    url: '/snip/find',
+                    dataType: 'json',
+                    data: function (params) {
+                        return {
+                            q: $.trim(params.term)
+                        };
+                    },
+                    processResults: function (data) {
+                        return {
+                            results: data
+                        };
+                    },
+                    cache: true
+                }
+            });
 
-        $('#snip_list').select2({
-            placeholder: "Pesquise",
-            minimumInputLength: 3,
-            minimumResultsForSearch: Infinity,
-            multiple: false,
-            ajax: {
-                url: '/snip/find',
-                dataType: 'json',
-                data: function (params) {
-                    return {
-                        q: $.trim(params.term)
-                    };
-                },
-                processResults: function (data) {
-                    return {
-                        results: data
-                    };
-                },
-                cache: true
-            }
+           $(document.body).on("change","#multi-append",function(){
+               var str = "";
+               $( "select option:selected" ).each(function() {
+                   str += $( this ).val() + "";
+               });
+               $.ajax({
+                   url: '/content/' + str,
+                   type: 'GET',
+                   success: function (content) {
+                       $('#contentGeral').empty();
+                       $("#loaderFeat").remove();
+                       $("#contentGeral").append(content).hide().fadeIn(500);
+                       HighColor();
+                   },
+                   beforeSend: function(){
+                       $('#preloader').fadeIn();
+                   },
+                   complete: function(){
+                       $('#preloader').fadeOut("slow");
+                   }
+               });
+           });
+       }
+
+
+        $(document).on('ready', function () {
+            UpSelectTwo();
         });
 
     </script>

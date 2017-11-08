@@ -34,8 +34,6 @@
     <script src="global/plugins/jquery.min.js" type="text/javascript"></script>
     <script src="global/plugins/js.cookie.min.js" type="text/javascript"></script>
     <script src="global/plugins/select2/js/select2.full.min.js" type="text/javascript"></script>
-    <script src="http://keenthemes.com/preview/metronic/theme/assets/pages/scripts/components-select2.min.js" type="text/javascript"></script>
-
 
     <script src="global/scripts/app.min.js" type="text/javascript"></script>
     <script src="layouts/layout/scripts/layout.min.js" type="text/javascript"></script>
@@ -45,6 +43,8 @@
     <script src="global/plugins/bootstrap-editable/bootstrap-editable/js/bootstrap-editable.min.js" type="text/javascript"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
         <script src="http://keenthemes.com/preview/metronic/theme/assets/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/i18n/pt-BR.js"></script>
+        <script src="http://keenthemes.com/preview/metronic/theme/assets/pages/scripts/components-select2.min.js" type="text/javascript"></script>
         <script>hljs.initHighlightingOnLoad();</script>
     @stack('scripts')
    
