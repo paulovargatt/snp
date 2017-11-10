@@ -25,7 +25,6 @@
 @stack('styles')
 <body>
     <div id="app">
-        <div id="preloader" style="display:none;"></div>
     @if (Auth::check())
         @include('menu')
     @endif

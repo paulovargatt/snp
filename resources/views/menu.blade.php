@@ -17,6 +17,7 @@
                     </div>
                 </div>
             </form>
+
             <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
                 <span></span>
             </a>
@@ -25,6 +26,12 @@
             <div class="top-menu">
 
                 <ul class="nav navbar-nav pull-right">
+                    <div id="preloader" style="display:none;">
+                        <div id="floatBarsG_1" class="floatBarsG"></div>
+                        <div id="floatBarsG_2" class="floatBarsG"></div>
+                        <div id="floatBarsG_3" class="floatBarsG"></div>
+                        <div id="floatBarsG_4" class="floatBarsG"></div>
+                    </div>
 
                     <li class="dropdown dropdown-user">
                         <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
