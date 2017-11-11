@@ -26,11 +26,10 @@
             <div class="top-menu">
 
                 <ul class="nav navbar-nav pull-right">
-                    <div id="preloader" style="display:none;">
-                        <div id="floatBarsG_1" class="floatBarsG"></div>
-                        <div id="floatBarsG_2" class="floatBarsG"></div>
-                        <div id="floatBarsG_3" class="floatBarsG"></div>
-                        <div id="floatBarsG_4" class="floatBarsG"></div>
+                    <div id="preloader" class="spinner" style="display: none;">
+                            <div class="bounce1" style="border-radius: 50%!important;"></div>
+                            <div class="bounce2" style="border-radius: 50%!important;"></div>
+                            <div class="bounce3" style="border-radius: 50%!important;"></div>
                     </div>
 
                     <li class="dropdown dropdown-user">
@@ -52,22 +51,10 @@
 
     <div class="page-container">
         <div class="page-sidebar-wrapper">
-            <div class="page-sidebar navbar-collapse collapse">
+            <div class="page-sidebar navbar-collapse collapse"> <br> <br>
                 <ul class="page-sidebar-menu  page-header-fixed " data-keep-expanded="false" data-auto-scroll="true" data-slide-speed="200" style="padding-top: 20px">
-                    <li class="sidebar-toggler-wrapper hide">
-                        <div class="sidebar-toggler">
-                            <span></span>
-                        </div>
-                    </li>
-                    <br><div style="margin-top: 11px"></div>
-                    @foreach ($snpMenu as $snip)
-                    <li class="nav-item">
-                        <a href="javascript:;" class=""  id="snp" data-id="{{$snip->id}}">
-                            <i class="fa fa-code"></i>
-                            <span class="title">{{$snip->title}}</span>
-                        </a>
-                    </li>
-                    @endforeach
+                    <br><br><div style="margin-top: 11px"></div>
                     </li>
                 </ul>
+                <a class="btn btn-xs btn-success" id="paginate"> Carregar +</a>
             </div>

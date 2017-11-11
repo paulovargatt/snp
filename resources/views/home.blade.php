@@ -130,6 +130,8 @@
 @push('scripts')
     <script>
         var user = "{{Auth::user()->id}}";
+        var pageAtual = "{{($snpMenu->firstItem()) ? "" : "1"}}";
+        var totalPages = "{{$snpMenu->lastPage()}}";
 
         $(document).ready(function () {
             $.fn.editable.defaults.params = function (params) {
@@ -193,12 +195,12 @@
                         $('#preloader').fadeIn();
                     },
                     success : function($data) {
-                        $('.page-header-fixed').load(' .page-header-fixed');
                         $("#contentGeral").empty();
                     },
                     complete: function(){
                         $('#preloader').fadeOut("slow");
                         GetLastSnip();
+                        cargaMenu();
                     }
                 });
             });
@@ -236,12 +238,12 @@
                     },
                     success : function($data) {
                         $('.modal').modal('toggle');
-                        $('.page-header-fixed').load(' .page-header-fixed');
                         $("#contentGeral").empty();
                     },
                     complete: function(){
                         $('#preloader').fadeOut("slow");
                         GetLastSnip();
+                        cargaMenu();
                     }
 
                 });
@@ -324,10 +326,48 @@
                });
            });
        }
-
+        function cargaMenu() {
+            $('.page-header-fixed').empty();
+            $.ajax({
+                url: '/paginate',
+                type: 'GET',
+                success: function (content) {
+                    $(".page-sidebar-menu").append(content).hide().fadeIn(500);
+                }
+            });
+        }
 
         $(document).on('ready', function () {
             UpSelectTwo();
+            cargaMenu();
+
+            if(pageAtual == totalPages ){
+                $('#paginate').remove();
+            }
+        });
+
+        $(document).on('click', '#paginate', function () {
+            pageAtual++;
+
+            if(pageAtual == totalPages ){
+                $(this).remove();
+            }
+
+
+            $.ajax({
+                url: '/paginate?page='+ pageAtual,
+                type: 'GET',
+                success: function (content) {
+                    $(".page-sidebar-menu").append(content).hide().fadeIn(500);
+                },
+                beforeSend: function(){
+                    $('#preloader').fadeIn();
+                },
+                complete: function(){
+                    $('#preloader').fadeOut("slow");
+
+                }
+            });
         });
 
     </script>

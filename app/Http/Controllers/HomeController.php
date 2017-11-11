@@ -20,9 +20,15 @@ class HomeController extends Controller
 
     public function index()
     {
-        $snpMenu =   Snippet::where('user_id','=',Auth::user()->id)->orderBy('created_at','DESC')->paginate(10);
+        $snpMenu =   Snippet::where('user_id','=',Auth::user()->id)->orderBy('created_at','ASC')->paginate(8);
         $snipet = Snippet::where('user_id','=',Auth::user()->id)->orderBy('created_at','DESC')->first();
         return view('home',compact('snpMenu','snipet'));
+    }
+
+    public function ajaxSnippetsPaginate(){
+        $snpPaginate =   Snippet::where('user_id','=',Auth::user()->id)->orderBy('created_at','DESC')
+            ->paginate(8);
+        return view('paginate', compact('snpPaginate'));
     }
 
     public function sair(){
@@ -78,19 +84,15 @@ class HomeController extends Controller
     }
 
     public function snipFind(Request $request){
-
             $term = trim($request->q);
             if (empty($term)) {
                 return \Response::json([]);
             }
             $snip = Snippet::where('user_id','=',Auth::user()->id)->search($term)->limit(5)->get();
-
             $formatted_tags = [];
-
             foreach ($snip as $snipet) {
                 $formatted_tags[] = ['id' => $snipet->id, 'data-id' =>  $snipet->id, 'text' => $snipet->title];
             }
-
             return \Response::json($formatted_tags);
     }
 

@@ -18,6 +18,7 @@ Route::group(['middleware' => 'auth'], function () {
 
     Route::get('/snip/find', 'HomeController@snipFind')->name('snipFind');
 
+    Route::get('/paginate', 'HomeController@ajaxSnippetsPaginate')->name('ajaxSnippetsPaginate');
 
     Route::post('/update-content/{id}', 'HomeController@update')->name('update-content');
 
