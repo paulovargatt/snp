@@ -1,5 +1,5 @@
 <h4 style="margin-bottom: -20px;"><b><a href="javascript:;" id="title_snip" data-type="text" data-pk="{{$snip->id}}"
-   class="editable editable-click"
+   class="editable editable-click font-blue-ebonyclay"
    > {{$snip->title}} </a></b></h4>
 <pre>
     <code>

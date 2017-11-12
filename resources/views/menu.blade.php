@@ -9,7 +9,10 @@
                     <span></span>
                 </div>
             </div>
-            <form style="width: 246px; position: absolute;top: 7px;    left: 246px;">
+            <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
+                <span></span>
+            </a>
+            <form class="searchbox">
                 <div class="form-group">
                     <div class="input-group select2-bootstrap-append">
                         <select id="multi-append" name="snip_list[]" id="snp" data-id="id" class="form-control select2">
@@ -18,9 +21,7 @@
                 </div>
             </form>
 
-            <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
-                <span></span>
-            </a>
+
             <a class="btn btn-circle btn-icon-only grey-mint" data-toggle="modal" href="#draggable" style="position: relative;top: 8px;margin:0 auto; display: block;margin-bottom: -42px;">
                 <i class="fa fa-plus"></i>
             </a>

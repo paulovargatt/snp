@@ -74,16 +74,46 @@
             background: #2f3338!important;
         }
 
-    </style>
+        .page-container{
+            background: #fff;
+        }
+
+
+        .searchbox{
+            width: 240px;
+            position: absolute;
+            left: 240px;
+            top: 7px;
+        }
+
+        /*Media Queries*/
+        @media screen and (max-width: 768px) {
+            .searchbox {
+                width: 100%!important;
+                position: absolute;
+                left: 0px;
+                top: 50px;
+            }
+
+            a.btn.btn-circle.btn-icon-only.grey-mint{
+                z-index: 555;
+            }
+            .select2-container--bootstrap .select2-selection--single{
+                 height: 39px!important;
+                }
+            }
+
+
+</style>
 @endpush
 @section('content')
     <div id="_token" class="hidden" data-token="{{ csrf_token() }}"></div>
     <br>
     <br>
     <div class="page-content-wrapper">
-        <div class="page-content">
+        <div class="page-content" style="width: 100%;">
              <div class="quick-nav-overlay"></div>
-                    <div class="col-md-12" id="contentGeral" style="width: 100%">
+                    <div class="col-md-12" id="contentGeral" style="width: 100%; padding:0px 0px;">
                         @if($snipet)
                         <h4 style="margin-bottom: -15px;"><b><a href="javascript:;" id="title_snip" data-type="text" data-pk="@if($snipet){{ $snipet->id }}@endif"
                         class="editable editable-click">@if($snipet){{$snipet->title}}@endif </a></b></h4>
