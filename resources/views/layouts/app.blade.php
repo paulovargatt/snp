@@ -44,6 +44,7 @@
         <script src="http://keenthemes.com/preview/metronic/theme/assets/global/plugins/bootstrap-confirmation/bootstrap-confirmation.min.js"></script>
         <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.5/js/i18n/pt-BR.js"></script>
         <script src="http://keenthemes.com/preview/metronic/theme/assets/pages/scripts/components-select2.min.js" type="text/javascript"></script>
+        <script src="http://keenthemes.com/preview/metronic/theme/assets/global/plugins/clipboardjs/clipboard.min.js" type="text/javascript"></script>
         <script>hljs.initHighlightingOnLoad();</script>
     @stack('scripts')
    

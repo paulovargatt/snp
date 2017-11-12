@@ -3,11 +3,13 @@
    > {{$snip->title}} </a></b></h4>
 <pre>
     <code>
-        <a href="javascript:;" id="snip" data-type="textarea" data-pk="{{$snip->id}}"
-           data-placeholder="Snippets" style="display: block" class="editable editable-pre-wrapped editable-click" name="snip">
+        <a href="javascript:;"  id="snip" data-type="textarea" data-pk="{{$snip->id}}"
+           data-placeholder="Snippets" style="display: block;padding: 0px;margin-top: -30px;" class="editable editable-pre-wrapped editable-click mt-clipboard-container" name="snip">
     {{ $snip->snip }}
         </a>
     </code>
 </pre>
+
+
 <button class="btn btn-danger pull-right" id="delete" data-snp="{{$snip->id}}">Deletar</button>
 

@@ -44,8 +44,8 @@
             z-index: 55551;
         }
         .select2-container--bootstrap .select2-selection {
-            background-color: #364150;
-            border: 1px solid #364150;
+            background-color: #2f3338;
+            border: 0px solid #2f3338;
             border-radius: 4px;
             color: #fff;
             font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -62,6 +62,18 @@
             padding: 0;
         }
 
+        .page-header.navbar {
+            background-color: #2f3338!important;
+        }
+
+        .page-content-wrapper{
+            background: #2f3338!important;
+        }
+
+        .page-sidebar-menu, .page-sidebar.collapse, .page-header-fixed{
+            background: #2f3338!important;
+        }
+
     </style>
 @endpush
 @section('content')
@@ -71,25 +83,27 @@
     <div class="page-content-wrapper">
         <div class="page-content">
              <div class="quick-nav-overlay"></div>
-                    <div class="col-md-12" id="contentGeral">
+                    <div class="col-md-12" id="contentGeral" style="width: 100%">
                         @if($snipet)
                         <h4 style="margin-bottom: -15px;"><b><a href="javascript:;" id="title_snip" data-type="text" data-pk="@if($snipet){{ $snipet->id }}@endif"
                         class="editable editable-click">@if($snipet){{$snipet->title}}@endif </a></b></h4>
                       <pre>
                           <code>
                             <a href="javascript:;" id="snip" data-type="textarea" data-pk="@if($snipet){{$snipet->id}}@endif"
-                               data-placeholder="Snippets" style="display: block" class="editable editable-pre-wrapped editable-click"
+                               data-placeholder="Snippets" style="display: block;padding: 0px;margin-top: -20px;" class="editable editable-pre-wrapped editable-click mt-clipboard-container"
                                name="snip">@if($snipet){{$snipet->snip}}@endif
                             </a>
                           </code>
                       </pre>
                         @endif
                         @if($snipet)
-                            <button class="btn red-mint pull-right" id="delete" data-snp="@if($snipet){{$snipet->id}}@endif">
-                           Deletar!</button>@endif
+
+                            <button  class="btn red-mint pull-right"
+                                    id="delete" data-snp="@if($snipet){{$snipet->id}}@endif"> Deletar!</button>@endif
                     </div>
-            <a class="btn blue-madison" style="margin-top: -65px; z-index: 55;position: relative;    margin-left: 16px;"
-               data-toggle="modal" href="#draggable"> Novo Snip </a>
+            <a href="javascript:;" style="top: -35px; position: relative; left: 16px;" class="btn dark mt-clipboard " data-clipboard-action="copy"
+               data-clipboard-target=".mt-clipboard-container">  <i class="icon-note"></i> Copiar Snip</a>
+
         </div>
     </div>
 
@@ -113,7 +127,6 @@
                                     <textarea class="form-control" name="snip_text" rows="9" placeholder="Snippet"></textarea>
                                 </div>
                             </div>
-
                     </div>
 
                 </div>
@@ -130,7 +143,9 @@
 @push('scripts')
     <script>
         var user = "{{Auth::user()->id}}";
-        var pageAtual = "{{($snpMenu->firstItem()) ? "" : "1"}}";
+        var pg = "{{$snpMenu->firstItem()}}";
+        var pageAtual = pg == '' ? '1' : pg == '1';
+
         var totalPages = "{{$snpMenu->lastPage()}}";
 
         $(document).ready(function () {
@@ -208,14 +223,16 @@
             //Edit Title
             $(document).on('click','#title_snip', function () {
                 var id = $(this).attr('data-pk');
+                if(id.length < 1){
+                    alert('Insira um titulo');
+                }
                 $(this).editable({
                     url: '/edit-title/' +id,
                     pk: 2,
                     title_snip: 'title_snip',
                     success: function(response) {
-                        $('.page-header-fixed').load(' .page-header-fixed');
-
-                    }
+                        cargaMenu();
+                    },
                 });
             });
 
@@ -358,7 +375,7 @@
                 url: '/paginate?page='+ pageAtual,
                 type: 'GET',
                 success: function (content) {
-                    $(".page-sidebar-menu").append(content).hide().fadeIn(500);
+                    $(".page-sidebar-menu").html(content).hide().fadeIn(500);
                 },
                 beforeSend: function(){
                     $('#preloader').fadeIn();
@@ -369,6 +386,29 @@
                 }
             });
         });
+
+            var paste_text;
+
+            $('.mt-clipboard').each(function(){
+                var clipboard = new Clipboard(this);
+                clipboard.on('success', function(e) {
+                    paste_text = e.text;
+                });
+
+                $(document).on('click', '.mt-clipboard', function () {
+                    if($(this).data('clipboard-paste') == true){
+                        if(paste_text){
+                            var paste_target = $(this).data('paste-target');
+                            $(paste_target).val(paste_text);
+                            $(paste_target).html(paste_text);
+                        } else {
+                            alert('No text was copied or cut.');
+                        }
+                    }
+                });
+            });
+
+
 
     </script>
 

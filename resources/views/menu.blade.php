@@ -21,10 +21,10 @@
             <a href="javascript:;" class="menu-toggler responsive-toggler" data-toggle="collapse" data-target=".navbar-collapse">
                 <span></span>
             </a>
-
-
+            <a class="btn btn-circle btn-icon-only grey-mint" data-toggle="modal" href="#draggable" style="position: relative;top: 8px;margin:0 auto; display: block;margin-bottom: -42px;">
+                <i class="fa fa-plus"></i>
+            </a>
             <div class="top-menu">
-
                 <ul class="nav navbar-nav pull-right">
                     <div id="preloader" class="spinner" style="display: none;">
                             <div class="bounce1" style="border-radius: 50%!important;"></div>
