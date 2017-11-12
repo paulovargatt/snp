@@ -100,8 +100,16 @@
             }
             .select2-container--bootstrap .select2-selection--single{
                  height: 39px!important;
-                }
             }
+            .select2 .select2-container .select2-container--bootstrap {
+                width: 100% !important;
+            }
+
+            .page-content{
+                width:100%;
+            }
+
+        }
 
 
 </style>
@@ -111,7 +119,7 @@
     <br>
     <br>
     <div class="page-content-wrapper">
-        <div class="page-content" style="width: 100%;">
+        <div class="page-content">
              <div class="quick-nav-overlay"></div>
                     <div class="col-md-12" id="contentGeral" style="width: 100%; padding:0px 0px;">
                         @if($snipet)
