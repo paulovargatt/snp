@@ -56,5 +56,5 @@
                     <br><br><div style="margin-top: 11px"></div>
                     </li>
                 </ul>
-                <a class="btn btn-xs btn-success" id="paginate"> Carregar +</a>
+                <a class="btn btn-xs grey-mint" style="display: block;" id="paginate"> Carregar +</a>
             </div>

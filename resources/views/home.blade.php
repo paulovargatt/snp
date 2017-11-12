@@ -103,7 +103,6 @@
                     </div>
             <a href="javascript:;" style="top: -35px; position: relative; left: 16px;" class="btn dark mt-clipboard " data-clipboard-action="copy"
                data-clipboard-target=".mt-clipboard-container">  <i class="icon-note"></i> Copiar Snip</a>
-
         </div>
     </div>
 
@@ -136,6 +135,7 @@
                     </form>
                 </div>
             </div>
+
         </div>
     </div>
 @endsection
@@ -375,7 +375,7 @@
                 url: '/paginate?page='+ pageAtual,
                 type: 'GET',
                 success: function (content) {
-                    $(".page-sidebar-menu").html(content).hide().fadeIn(500);
+                    $(".page-sidebar-menu").append(content).hide().fadeIn(500);
                 },
                 beforeSend: function(){
                     $('#preloader').fadeIn();
