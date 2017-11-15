@@ -139,8 +139,8 @@
                             <button  class="btn red-mint pull-right"
                                     id="delete" data-snp="@if($snipet){{$snipet->id}}@endif"> Deletar!</button>@endif
                     </div>
-            <a href="javascript:;" style="top: -35px; position: relative; left: 16px;" class="btn dark mt-clipboard " data-clipboard-action="copy"
-               data-clipboard-target=".mt-clipboard-container">  <i class="icon-note"></i> Copiar Snip</a>
+            @if($snipet) <a href="javascript:;" style="top: -35px; position: relative; left: 16px;" class="btn dark mt-clipboard " data-clipboard-action="copy"
+               data-clipboard-target=".mt-clipboard-container">  <i class="icon-note"></i> Copiar Snip</a>@endif
         </div>
     </div>
 

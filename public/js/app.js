@@ -68,7 +68,7 @@
 /***/ (function(module, exports, __webpack_require__) {
 
 __webpack_require__(1);
-module.exports = __webpack_require__(14);
+module.exports = __webpack_require__(6);
 
 
 /***/ }),
@@ -3154,18 +3154,10 @@ if ("undefined" == typeof jQuery) throw new Error("Bootstrap's JavaScript requir
 }(jQuery);
 
 /***/ }),
-/* 6 */,
-/* 7 */,
-/* 8 */,
-/* 9 */,
-/* 10 */,
-/* 11 */,
-/* 12 */,
-/* 13 */,
-/* 14 */
+/* 6 */
 /***/ (function(module, exports) {
 
-// removed by extract-text-webpack-plugin
+throw new Error("Module build failed: ModuleNotFoundError: Module not found: Error: Can't resolve '../global/plugins/bootstrap-switch/css/bootstrap-switch.min.css' in 'C:\\xampp\\htdocs\\snp\\resources\\assets\\sass'\n    at factoryCallback (C:\\xampp\\htdocs\\snp\\node_modules\\webpack\\lib\\Compilation.js:276:40)\n    at factory (C:\\xampp\\htdocs\\snp\\node_modules\\webpack\\lib\\NormalModuleFactory.js:235:20)\n    at resolver (C:\\xampp\\htdocs\\snp\\node_modules\\webpack\\lib\\NormalModuleFactory.js:60:20)\n    at asyncLib.parallel (C:\\xampp\\htdocs\\snp\\node_modules\\webpack\\lib\\NormalModuleFactory.js:127:20)\n    at C:\\xampp\\htdocs\\snp\\node_modules\\async\\dist\\async.js:3861:9\n    at C:\\xampp\\htdocs\\snp\\node_modules\\async\\dist\\async.js:421:16\n    at iteratorCallback (C:\\xampp\\htdocs\\snp\\node_modules\\async\\dist\\async.js:996:13)\n    at C:\\xampp\\htdocs\\snp\\node_modules\\async\\dist\\async.js:906:16\n    at C:\\xampp\\htdocs\\snp\\node_modules\\async\\dist\\async.js:3858:13\n    at resolvers.normal.resolve (C:\\xampp\\htdocs\\snp\\node_modules\\webpack\\lib\\NormalModuleFactory.js:119:22)\n    at onError (C:\\xampp\\htdocs\\snp\\node_modules\\enhanced-resolve\\lib\\Resolver.js:65:10)\n    at loggingCallbackWrapper (C:\\xampp\\htdocs\\snp\\node_modules\\enhanced-resolve\\lib\\createInnerCallback.js:31:19)\n    at runAfter (C:\\xampp\\htdocs\\snp\\node_modules\\enhanced-resolve\\lib\\Resolver.js:158:4)\n    at innerCallback (C:\\xampp\\htdocs\\snp\\node_modules\\enhanced-resolve\\lib\\Resolver.js:146:3)\n    at loggingCallbackWrapper (C:\\xampp\\htdocs\\snp\\node_modules\\enhanced-resolve\\lib\\createInnerCallback.js:31:19)\n    at next (C:\\xampp\\htdocs\\snp\\node_modules\\tapable\\lib\\Tapable.js:252:11)\n    at C:\\xampp\\htdocs\\snp\\node_modules\\enhanced-resolve\\lib\\UnsafeCachePlugin.js:40:4\n    at loggingCallbackWrapper (C:\\xampp\\htdocs\\snp\\node_modules\\enhanced-resolve\\lib\\createInnerCallback.js:31:19)\n    at runAfter (C:\\xampp\\htdocs\\snp\\node_modules\\enhanced-resolve\\lib\\Resolver.js:158:4)\n    at innerCallback (C:\\xampp\\htdocs\\snp\\node_modules\\enhanced-resolve\\lib\\Resolver.js:146:3)\n    at loggingCallbackWrapper (C:\\xampp\\htdocs\\snp\\node_modules\\enhanced-resolve\\lib\\createInnerCallback.js:31:19)\n    at next (C:\\xampp\\htdocs\\snp\\node_modules\\tapable\\lib\\Tapable.js:252:11)\n    at innerCallback (C:\\xampp\\htdocs\\snp\\node_modules\\enhanced-resolve\\lib\\Resolver.js:144:11)\n    at loggingCallbackWrapper (C:\\xampp\\htdocs\\snp\\node_modules\\enhanced-resolve\\lib\\createInnerCallback.js:31:19)\n    at next (C:\\xampp\\htdocs\\snp\\node_modules\\tapable\\lib\\Tapable.js:249:35)\n    at resolver.doResolve.createInnerCallback (C:\\xampp\\htdocs\\snp\\node_modules\\enhanced-resolve\\lib\\DescriptionFilePlugin.js:44:6)\n    at loggingCallbackWrapper (C:\\xampp\\htdocs\\snp\\node_modules\\enhanced-resolve\\lib\\createInnerCallback.js:31:19)\n    at afterInnerCallback (C:\\xampp\\htdocs\\snp\\node_modules\\enhanced-resolve\\lib\\Resolver.js:168:10)\n    at loggingCallbackWrapper (C:\\xampp\\htdocs\\snp\\node_modules\\enhanced-resolve\\lib\\createInnerCallback.js:31:19)\n    at next (C:\\xampp\\htdocs\\snp\\node_modules\\tapable\\lib\\Tapable.js:252:11)");
 
 /***/ })
 /******/ ]);
