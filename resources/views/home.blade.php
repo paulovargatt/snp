@@ -28,7 +28,7 @@
             padding: 0em;
             background: #ffffff;
             border-color: #fff;
-            margin: 0px;
+            margin-top: 12px;
         }
         .page-header.navbar {
             background-color: #364150;
@@ -109,6 +109,20 @@
                 width:100%;
             }
 
+            #snip{
+                background: url(https://i.imgur.com/2cOaJ.png);
+                background-repeat: no-repeat;
+                padding-left: 35px;
+                padding-top: 10px;
+                border-color:#ccc;
+            }
+
+            .input-large {
+                width: 720px !important;
+                margin-left: -63px !important;
+                height: 360px !important;
+            }
+
         }
 
 
@@ -128,7 +142,8 @@
                       <pre>
                           <code>
                             <a href="javascript:;" id="snip" data-type="textarea" data-pk="@if($snipet){{$snipet->id}}@endif"
-                               data-placeholder="Snippets" style="display: block;padding: 0px;margin-top: -20px;" class="editable editable-pre-wrapped editable-click mt-clipboard-container"
+                               data-placeholder="Snippets"  style="display: block;padding: 0px;margin-top: -20px;background: url(https://i.imgur.com/2cOaJ.png);
+           background-repeat: no-repeat;padding-left: 35px;padding-top: 10px;border-color:#ccc;" class="editable editable-pre-wrapped editable-click mt-clipboard-container"
                                name="snip">@if($snipet){{$snipet->snip}}@endif
                             </a>
                           </code>
@@ -198,10 +213,12 @@
                     var ide = $(this).attr('data-pk');
                     $(this).editable({
                         url: '/update-content/' + ide,
-                        tpl: '<textarea type="text" class="code" style="padding-right:4px;height:300px;width: 800px!important;">',
+                        tpl: '<textarea class="code" style="background: url(https://i.imgur.com/2cOaJ.png);\n' +
+                        '           background-repeat: no-repeat;padding-left: 35px;padding-top: 11px;border-color:#ccc;    height: 360px!important;margin-left: -63px!important; width: 720px!important;">',
                         showbuttons: 'bottom',
                         success: function(response) {
                                 hljs.highlightBlock(this);
+
                         }
                     });
                 });
@@ -209,21 +226,12 @@
                 $(document).on('click', '#snp', function () {
                     $("#contentGeral").empty();
                     var id = $(this).attr('data-id');
-
-                    $("#snp").click(function () {
-                        $('#snip').addClass('ativo'+id);
-                    });
-
-                    if($('#snip').hasClass('ativo'+id)){
-                       abort();
-                    }
-
                     $.ajax({
                         url: '/content/' + id,
                         type: 'GET',
                         success: function (content) {
-                            $("#loaderFeat").remove();
-                            $("#contentGeral").append(content).hide().fadeIn(500);
+                            $("#contentGeral").empty();
+                            $("#contentGeral").html(content).hide().fadeIn(500);
                             HighColor();
                         },
                         beforeSend: function(){
